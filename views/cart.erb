@@ -9,14 +9,23 @@
     </tr>
   </thead>
   <tbody>
-
+  <% total_price = 0 %>
+  <% total_qty = 0 %>
   <% @items.each do |item| %>
     <tr>
       <td><%= item[0].title %></td>
       <td><%= item[0].price %></td>
       <td><%= item[1] %></td>
     </tr>
+    <% total_price += item[0].price * item[1].to_i %>
+    <% total_qty += item[1].to_i %>
   <% end %>
+
+    <tr>
+      <td></td>
+      <td>Total: <%= total_price %> Rub</td>
+      <td><%= total_qty %></td>
+    </tr>
 
   </tbody>
 </table>
