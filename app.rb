@@ -3,12 +3,17 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
+set :bind, '0.0.0.0'
 set :database, "sqlite3:pizzashop.db"
 
 class Product < ActiveRecord::Base
 end
 
-class Order < ActiveRecord::Base
+class Shipment < ActiveRecord::Base
+  validates :scope, presence: true
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :address, presence: true
 end
 
 get '/' do
@@ -20,34 +25,41 @@ get '/about' do
 	erb :about
 end
 
-post '/place_order' do
-  @order = Order.create params[:order]
-  erb :order_placed
+get '/contacts' do
+  erb "Under construction"
 end
 
 post '/cart' do
-
-  # получаем список параметров и разбираем (parse) их
-
-  @orders_input = params[:orders_input]
+  @orders_input = params[:orderstring]
   @items = parse_orders_input @orders_input
 
   # выводим сообщение о том, что корзина пуста
-
   if @items.length == 0
     return erb :cart_is_empty
   end
-
-  # выводим список продуктов в корзине
 
   @items.each do |item|
     # id, cnt
     item[0] = Product.find(item[0])
   end
 
-  # возвращаем представление по-умолчанию
-
 	erb :cart
+end
+
+get '/admin' do
+   @shipms = Shipment.all
+  erb :orders_list
+end
+
+post '/place_order' do
+  @shipment = Shipment.new params[:order]
+
+  if @shipment.save
+    erb :order_placed
+  else
+    @error = @shipment.errors.full_messages.first
+    erb "Error"
+  end
 end
 
 def parse_orders_input orders_input

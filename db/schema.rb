@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009182857) do
-
-  create_table "orders", force: true do |t|
-    t.text     "orders_input"
-    t.text     "name"
-    t.text     "phone"
-    t.text     "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141008085450) do
 
   create_table "products", force: true do |t|
     t.string   "title"
@@ -31,6 +22,15 @@ ActiveRecord::Schema.define(version: 20141009182857) do
     t.boolean  "is_veg"
     t.boolean  "is_best_offer"
     t.string   "path_to_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shipments", force: true do |t|
+    t.text     "scope"
+    t.text     "name"
+    t.text     "phone"
+    t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
