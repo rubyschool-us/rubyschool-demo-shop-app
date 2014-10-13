@@ -9,7 +9,7 @@
     </thead>
 
     <tbody>
-    <% @shipms.each do |item| %>
+    <% @shipms.reverse.each do |item| %>
       <tr>
         <td><%= item[:scope] %></td>
         <td><%= item[:name] %></td>
