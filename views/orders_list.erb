@@ -1,0 +1,21 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Scope</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @shipms.reverse.each do |item| %>
+      <tr>
+        <td><%= item[:scope] %></td>
+        <td><%= item[:name] %></td>
+        <td><%= item[:phone] %></td>
+        <td><%= item[:address] %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>

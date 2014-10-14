@@ -1,0 +1,23 @@
+<h2>All orders</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Scope</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @ships.each do |s| %>
+    <tr>
+      <td><%= s.scope %></td>
+      <td><%= s.name %></td>
+      <td><%= s.phone %></td>
+      <td><%= s.address %></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
