@@ -1,4 +1,4 @@
-class AddProducts < ActiveRecord::Migration
+class AddProducts < ActiveRecord::Migration[4.2]
   def change
   	Product.create ({
   		:title => 'Hawaiian',
