@@ -1,4 +1,4 @@
-class CreateShipments < ActiveRecord::Migration
+class CreateShipments < ActiveRecord::Migration[4.2]
   def change
   	create_table :shipments do |t|
   		t.text :scope

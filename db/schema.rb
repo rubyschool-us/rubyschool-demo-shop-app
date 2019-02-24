@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,26 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008085450) do
+ActiveRecord::Schema.define(version: 2014_10_09_182857) do
 
-  create_table "products", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.decimal  "price"
-    t.decimal  "size"
-    t.boolean  "is_spicy"
-    t.boolean  "is_veg"
-    t.boolean  "is_best_offer"
-    t.string   "path_to_image"
+  create_table "orders", force: :cascade do |t|
+    t.text "orders_input"
+    t.text "name"
+    t.text "phone"
+    t.text "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "shipments", force: true do |t|
-    t.text     "scope"
-    t.text     "name"
-    t.text     "phone"
-    t.text     "address"
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "price"
+    t.decimal "size"
+    t.boolean "is_spicy"
+    t.boolean "is_veg"
+    t.boolean "is_best_offer"
+    t.string "path_to_image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shipments", force: :cascade do |t|
+    t.text "scope"
+    t.text "name"
+    t.text "phone"
+    t.text "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
